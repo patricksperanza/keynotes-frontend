@@ -12,8 +12,9 @@ export const AuthContext = createContext<AuthContextType>(
 );
 
 export const AuthContexProvider = ({ children }: AuthContextProviderProps) => {
+  const user = localStorage.getItem("user");
   const [currentUser, setCurrentUser] = useState<User | null>(
-    JSON.parse(localStorage.getItem("user") || "") || null
+    typeof user === "string" ? JSON.parse(user) : null
   );
 
   const login = async (inputs: LoginInputs) => {
