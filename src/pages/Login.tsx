@@ -8,7 +8,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [type, setType] = useState("");
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);

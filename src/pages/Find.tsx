@@ -25,7 +25,7 @@ const Find = () => {
   };
 
   const addTeacher = async () => {
-    const res = await axios.post(
+    await axios.post(
       "http://localhost:3001/lookup/add",
       { teacher, currentUser },
       {

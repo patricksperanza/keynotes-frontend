@@ -85,7 +85,7 @@ const Feed = () => {
   ) => {
     e.preventDefault();
 
-    const res = await axios.post("http://localhost:3001/lesson/edit", {
+    await axios.post("http://localhost:3001/lesson/edit", {
       id: lessons[i].post_id,
       post: value,
     });
@@ -105,8 +105,8 @@ const Feed = () => {
     id: number
   ) => {
     e.stopPropagation();
-    console.log(id);
-    const res = await axios.post("http://localhost:3001/lesson/delete", { id });
+
+    await axios.post("http://localhost:3001/lesson/delete", { id });
     getLessons();
   };
 
