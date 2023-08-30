@@ -25,7 +25,7 @@ function Write() {
     }
 
     try {
-      await axios.post(`${BASE_URL}/add`, {
+      await axios.post(`${BASE_URL}/lesson/add`, {
         value,
         date,
         teacherId,
