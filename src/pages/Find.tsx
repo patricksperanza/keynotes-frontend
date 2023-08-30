@@ -15,7 +15,7 @@ const Find = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await axios.post(
-      "http://localhost:3001/lookup/find",
+      `${BASE_URL}/lookup/find`,
       { code },
       {
         withCredentials: true,
@@ -26,7 +26,7 @@ const Find = () => {
 
   const addTeacher = async () => {
     await axios.post(
-      "http://localhost:3001/lookup/add",
+      `${BASE_URL}/lookup/add`,
       { teacher, currentUser },
       {
         withCredentials: true,

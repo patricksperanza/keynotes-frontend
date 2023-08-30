@@ -33,7 +33,7 @@ const Feed = () => {
 
   // Get lessons from the db
   const getLessons = async () => {
-    const res = await axios.post("http://localhost:3001/lesson", {
+    const res = await axios.post(`${BASE_URL}/lesson`, {
       connectedUserId,
       currentUserId,
     });
@@ -85,7 +85,7 @@ const Feed = () => {
   ) => {
     e.preventDefault();
 
-    await axios.post("http://localhost:3001/lesson/edit", {
+    await axios.post(`${BASE_URL}/lesson/edit`, {
       id: lessons[i].post_id,
       post: value,
     });
@@ -106,7 +106,7 @@ const Feed = () => {
   ) => {
     e.stopPropagation();
 
-    await axios.post("http://localhost:3001/lesson/delete", { id });
+    await axios.post(`${BASE_URL}/lesson/delete`, { id });
     getLessons();
   };
 

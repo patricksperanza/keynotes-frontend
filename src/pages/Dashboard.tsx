@@ -15,11 +15,9 @@ const Dashboard = () => {
   // retrieve list of connected students or teachers
   useEffect(() => {
     const getList = async () => {
-      const res = await axios.post(
-        "http://localhost:3001/user/list",
-        currentUser,
-        { withCredentials: true }
-      );
+      const res = await axios.post(`${BASE_URL}/user/list`, currentUser, {
+        withCredentials: true,
+      });
 
       setList(res.data);
     };

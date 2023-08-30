@@ -25,7 +25,7 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:3001/auth/register`, {
+      await axios.post(`${BASE_URL}/auth/register`, {
         ...inputs,
         type,
         instrument,

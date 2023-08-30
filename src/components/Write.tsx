@@ -24,7 +24,7 @@ function Write() {
     }
 
     try {
-      await axios.post("http://localhost:3001/lesson/add", {
+      await axios.post(`${BASE_URL}/add`, {
         value,
         date,
         teacherId,

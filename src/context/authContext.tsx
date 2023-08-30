@@ -18,7 +18,7 @@ export const AuthContexProvider = ({ children }: AuthContextProviderProps) => {
   );
 
   const login = async (inputs: LoginInputs) => {
-    const res = await axios.post("http://localhost:3001/auth/login", inputs, {
+    const res = await axios.post(`${BASE_URL}/auth/login`, inputs, {
       withCredentials: true,
     });
     console.log(res.data);
@@ -28,7 +28,7 @@ export const AuthContexProvider = ({ children }: AuthContextProviderProps) => {
 
   const logout = async () => {
     await axios.post(
-      "http://localhost:3001/auth/logout",
+      `${BASE_URL}/auth/logout`,
       {},
       {
         withCredentials: true,
