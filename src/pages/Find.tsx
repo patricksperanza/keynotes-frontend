@@ -5,6 +5,7 @@ import axios from "axios";
 import Card from "../components/Card";
 import { useNavigate } from "react-router-dom";
 import { User } from "../types";
+import { BASE_URL } from "../utils/baseUrl";
 
 const Find = () => {
   const navigate = useNavigate();

@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 import "./Write.scss";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { BASE_URL } from "../utils/baseUrl";
 
 function Write() {
   const navigate = useNavigate();

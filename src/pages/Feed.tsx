@@ -6,6 +6,7 @@ import axios from "axios";
 import parse from "html-react-parser";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { BASE_URL } from "../utils/baseUrl";
 
 interface Lesson {
   post_id: number;

@@ -5,6 +5,7 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/authContext";
 import { User } from "../types";
 import axios from "axios";
+import { BASE_URL } from "../utils/baseUrl";
 
 const Dashboard = () => {
   const { currentUser } = useContext(AuthContext);

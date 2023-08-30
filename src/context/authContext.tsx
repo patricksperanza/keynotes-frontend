@@ -6,6 +6,7 @@ import {
   User,
 } from "../types";
 import { createContext, useEffect, useState } from "react";
+import { BASE_URL } from "../utils/baseUrl";
 
 export const AuthContext = createContext<AuthContextType>(
   {} as AuthContextType
