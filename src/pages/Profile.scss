@@ -5,12 +5,12 @@ $yellow: #feff86;
 $offwhite: #f5f5f5;
 
 .profile {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 100px;
   height: 80vh;
+  justify-content: center;
 
   a {
     color: inherit;
@@ -27,8 +27,8 @@ $offwhite: #f5f5f5;
     gap: 20px;
     height: 200px;
     justify-content: center;
+    padding: 0 50px;
     transition: all 0.5s ease-in-out;
-    width: 400px;
 
     .image {
       background-color: $medBlue;
@@ -56,14 +56,18 @@ $offwhite: #f5f5f5;
     }
 
     .code {
-      margin-top: 10px;
       font-size: 0.7rem;
+      margin-top: 10px;
+    }
+
+    .code p {
+      font-size: 0.8rem;
     }
   }
 
   .instructions {
-    max-width: 400px;
-    font-size: 0.9rem;
     color: $darkBlue;
+    font-size: 0.9rem;
+    max-width: 400px;
   }
 }

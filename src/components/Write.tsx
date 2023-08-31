@@ -18,6 +18,7 @@ function Write() {
   const [date, setDate] = useState("");
   const [error, setError] = useState("");
 
+  // Submit New Lesson
   const handleSubmit = async () => {
     if (date === "") {
       setError("Date is required");

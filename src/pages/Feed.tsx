@@ -7,14 +7,7 @@ import parse from "html-react-parser";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { BASE_URL } from "../utils/baseUrl";
-
-interface Lesson {
-  post_id: number;
-  post: string;
-  date: string;
-  display: boolean;
-  isEditing: boolean;
-}
+import { Lesson } from "../types";
 
 const Feed = () => {
   const { currentUser } = useContext(AuthContext);
@@ -38,6 +31,7 @@ const Feed = () => {
       connectedUserId,
       currentUserId,
     });
+    // Add display and isEditing properties to each lesson object
     const lessonData = res.data.lessons.map((lesson: Lesson) => {
       return { ...lesson, display: false, isEditing: false };
     });
@@ -124,46 +118,57 @@ const Feed = () => {
         <h3>
           {name.first_name} {name.last_name}
         </h3>
-        {lessons.map((lesson, index) => (
-          <div key={lesson.post_id} className="lesson">
-            <div className="lesson-header" onClick={() => handleToggle(index)}>
-              <div className="lesson-header-left">
-                <p>{lessons[index].display ? "v" : ">"}</p>
-                <p className="date">{lesson.date.split("T")[0]}</p>
+        {lessons.length > 0 ? (
+          lessons.map((lesson, index) => (
+            <div key={lesson.post_id} className="lesson">
+              <div
+                className="lesson-header"
+                onClick={() => handleToggle(index)}
+              >
+                <div className="lesson-header-left">
+                  <p>{lessons[index].display ? "v" : ">"}</p>
+                  <p className="date">{lesson.date.split("T")[0]}</p>
+                </div>
+                {userType === "Teacher" && (
+                  <div className="lesson-header-right">
+                    <p
+                      className="icon edit"
+                      onClick={(e) => handleEdit(e, index)}
+                    >
+                      ✏️
+                    </p>
+                    <p
+                      className="icon trash"
+                      onClick={(e) => handleDelete(e, lesson.post_id)}
+                    >
+                      🗑️
+                    </p>
+                  </div>
+                )}
               </div>
-              {userType === "Teacher" && (
-                <div className="lesson-header-right">
-                  <p
-                    className="icon edit"
-                    onClick={(e) => handleEdit(e, index)}
-                  >
-                    ✏️
-                  </p>
-                  <p
-                    className="icon trash"
-                    onClick={(e) => handleDelete(e, lesson.post_id)}
-                  >
-                    🗑️
-                  </p>
-                </div>
-              )}
+              {lessons[index].display &&
+                (lessons[index].isEditing ? (
+                  <div>
+                    <ReactQuill
+                      theme="snow"
+                      value={value}
+                      onChange={setValue}
+                    />
+                    <button
+                      onClick={(e) => handleSubmit(e, index)}
+                      className="submitBtn"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                ) : (
+                  <div className="post">{parse(lesson.post)}</div>
+                ))}
             </div>
-            {lessons[index].display &&
-              (lessons[index].isEditing ? (
-                <div>
-                  <ReactQuill theme="snow" value={value} onChange={setValue} />
-                  <button
-                    onClick={(e) => handleSubmit(e, index)}
-                    className="submitBtn"
-                  >
-                    Submit
-                  </button>
-                </div>
-              ) : (
-                <div className="post">{parse(lesson.post)}</div>
-              ))}
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No lessons to display yet</p>
+        )}
       </div>
     </div>
   );

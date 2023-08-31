@@ -13,26 +13,16 @@ const Find = () => {
   const [code, setCode] = useState("");
   const [teacher, setTeacher] = useState<User | null>(null);
 
+  // Lookup Teacher using Unique Code
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await axios.post(
-      `${BASE_URL}/lookup/find`,
-      { code },
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await axios.post(`${BASE_URL}/lookup/find`, { code });
     setTeacher(res.data);
   };
 
+  // Add Teacher
   const addTeacher = async () => {
-    await axios.post(
-      `${BASE_URL}/lookup/add`,
-      { teacher, currentUser },
-      {
-        withCredentials: true,
-      }
-    );
+    await axios.post(`${BASE_URL}/lookup/add`, { teacher, currentUser });
     navigate("/dashboard");
   };
 

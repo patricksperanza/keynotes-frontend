@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import "./Register.scss";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -16,6 +16,7 @@ const Login = () => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  // Login User
   const handleSubmit = async (e: React.FormEvent<Element>) => {
     e.preventDefault();
     try {
@@ -51,7 +52,7 @@ const Login = () => {
         {error && <p>{error}</p>}
 
         <span>
-          Do you have an account? <Link to="/login">Login</Link>
+          Don't have an account? <Link to="/register">Sign Up</Link>
         </span>
       </form>
     </div>

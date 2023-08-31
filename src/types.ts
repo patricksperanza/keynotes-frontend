@@ -1,3 +1,8 @@
+export interface LoginInputs {
+  email: string;
+  password: string;
+}
+
 export interface AuthContextType {
   login(inputs: LoginInputs): void;
   logout(): void;
@@ -6,11 +11,6 @@ export interface AuthContextType {
 
 export interface AuthContextProviderProps {
   children: React.ReactNode;
-}
-
-export interface LoginInputs {
-  email: string;
-  password: string;
 }
 
 export interface User {
@@ -27,4 +27,6 @@ export interface Lesson {
   post_id: number;
   post: string;
   date: string;
+  display: boolean;
+  isEditing: boolean;
 }

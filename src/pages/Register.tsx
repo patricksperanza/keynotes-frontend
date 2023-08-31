@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 import { BASE_URL } from "../utils/baseUrl";
+import axios from "axios";
+import "./Register.scss";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const Register = () => {
     }));
   };
 
+  // Register User
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {

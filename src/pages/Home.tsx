@@ -2,6 +2,7 @@ import home from "../assets/home.jpg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
+import "./Home.scss";
 
 const Home = () => {
   const { currentUser } = useContext(AuthContext);

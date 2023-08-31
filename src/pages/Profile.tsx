@@ -5,6 +5,7 @@ import { AuthContext } from "../context/authContext";
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
 
+  // Determine if user is a student or teacher
   const userType = currentUser?.type === 0 ? "Student" : "Teacher";
 
   return (
@@ -20,7 +21,7 @@ const Profile = () => {
               <div className="name">
                 {currentUser.first_name + " " + currentUser.last_name}
               </div>
-              <div className="email">{currentUser?.email}</div>
+              <div className="email">{currentUser.email}</div>
               <div className="instrument">
                 {currentUser.instrument[0].toUpperCase() +
                   currentUser.instrument.slice(1)}

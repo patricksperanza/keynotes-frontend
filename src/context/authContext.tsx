@@ -19,21 +19,13 @@ export const AuthContexProvider = ({ children }: AuthContextProviderProps) => {
   );
 
   const login = async (inputs: LoginInputs) => {
-    const res = await axios.post(`${BASE_URL}/auth/login`, inputs, {
-      withCredentials: true,
-    });
+    const res = await axios.post(`${BASE_URL}/auth/login`, inputs);
 
     setCurrentUser({ ...res.data });
   };
 
   const logout = async () => {
-    await axios.post(
-      `${BASE_URL}/auth/logout`,
-      {},
-      {
-        withCredentials: true,
-      }
-    );
+    await axios.post(`${BASE_URL}/auth/logout`, {});
     setCurrentUser(null);
   };
 
