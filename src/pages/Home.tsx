@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className="home">
       <div className="home-img-container">
-        <img className="home-img" src={home} alt="cello lesson" />
+        <img className="home-img" src={home} alt="cello-lesson" />
       </div>
       <div className="home-text">
         <h1>Connecting Teachers and Students One Lesson at a Time</h1>

@@ -11,7 +11,7 @@ const Nav = () => {
   return (
     <div className="nav">
       <Link to="/" className="nav-logo">
-        <img src={logo} alt="hero image" />
+        <img src={logo} alt="logo-image" />
       </Link>
       <div>
         {currentUser !== null ? (
