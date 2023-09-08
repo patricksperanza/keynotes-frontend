@@ -4,25 +4,28 @@ import { describe, it, expect } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 
 describe("Home", () => {
-  it("render hero image", () => {
+  it("renders home page correctly", () => {
     render(
       <MemoryRouter>
         <Home />
       </MemoryRouter>
     );
-    const hero = screen.getByAltText("cello-lesson");
-    expect(hero).toBeInTheDocument();
-  });
+    // Hero Image
+    const heroImage = screen.getByRole("img", {
+      name: /cello\-lesson/i,
+    });
+    expect(heroImage).toBeInTheDocument();
 
-  it("renders headline text", () => {
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>
+    // Heading Text
+    const heading = screen.getByRole("heading", {
+      name: /connecting teachers and students one lesson at a time/i,
+    });
+    expect(heading).toBeInTheDocument();
+
+    // Sub Heading Text
+    const subheading = screen.getByText(
+      /ensuring the success of students and teachers alike!/i
     );
-    const headline = screen.getByText(
-      "Connecting Teachers and Students One Lesson at a Time"
-    );
-    expect(headline).toBeInTheDocument();
+    expect(subheading).toBeInTheDocument();
   });
 });
